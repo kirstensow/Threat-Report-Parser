@@ -1,6 +1,12 @@
 
 import json
 import re
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--input', default= 'ThreatReport.txt' , help='input file')
+parser.add_argument('--output', default= 'threat_report_iocs.json' , help='output file')
+args = parser.parse_args()
 
 def defang_cleaner(contents):
     return contents.replace('[.]', '.') #Removes square brackets
@@ -49,7 +55,7 @@ def json_converter(hash_match, ip_match, domain_match, email_match, cve_match):
         print(json.dumps(iocs, indent=2))
 
 
-with open ('ThreatReport.txt', 'r') as file:
+with open (args.input, 'r') as file:
     contents = defang_cleaner(file.read())
     hash_match = hashes(contents)
     ip_match = ip(contents)
