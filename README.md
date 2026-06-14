@@ -13,13 +13,17 @@ Indicators of Compromise (IOCs) into structured JSON output.
   - CVEs
 - Deduplicates all extracted IOCs
 - Exports structured output to threat_report_iocs.json
-
+  
 ## How to Use
-1. Paste your threat report text into threat_report.txt
-2. Run the script:
-   python3 main.py
+Run with default files (iocs.csv and results.csv):
+python3 Report-Parser.py
 
-3. Extracted IOCs are printed to terminal and saved to threat_report_iocs.json
+Or specify custom input/output files:
+python3 main.py --input ThreatReport.txt --output threat_report_iocs.json
+
+For help:
+python3 Report-Parser.py --help
+
 
 ## Example Output
 ```json
